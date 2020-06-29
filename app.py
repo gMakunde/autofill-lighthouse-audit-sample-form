@@ -7,7 +7,19 @@ app = flask.Flask(__name__)
 
 @app.route('/')
 def index():
+    return flask.render_template("audit_tests homepage.html")
+
+@app.route('/autocomplete-audit1')
+def index():
     return flask.render_template("autocomplete_audit_test.html")
+
+@app.route('/autocomplete-audit2')
+def index():
+    return flask.render_template("autocomplete_audit_test2.html")
+
+@app.route('/placeholder-audit')
+def index():
+    return flask.render_template("placeholder_audit_test.html")
 
 app.run(
     port=int(os.getenv('PORT', 8080)),
