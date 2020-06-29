@@ -38,7 +38,7 @@ def placeholder():
     return flask.render_template("placeholder_audit_test.html")
 
 @app.route('/placeholder-audit-passed')
-def placeholder():
+def placeholder2():
     return flask.render_template("placeholder_audit_test_pass.html")
 
 app.run(
