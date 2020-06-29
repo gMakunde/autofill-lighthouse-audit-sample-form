@@ -4,7 +4,7 @@
 </head>
 <body>
   <form id="checkout" name="checkout" action="../done.html" method="post">
-    Name on card: <input type="text" name="name_cc" autocomplete="name"><br>
+    Name on card: <input type="text" name="name_cc" autocomplete="cc-name"><br>
     Credit card number: <input type="text" name="CCNo" autocomplete="cc-number"><br>
     Expiry Date: <select name="CCExpiresMonth" autocomplete="cc-exp-month">
       <option value="">MM</option>
@@ -39,8 +39,7 @@
     <input id="fill" type="button" value="Fill with default values">
     <input type="submit" value="Submit">
   </form>
-  <p>This page will pass the audit because all the autocomplete attributes 
-    set using the common attribute names that the chrome browser can detect.</p>
+  <p>This page will not pass the audit because none of the placeholder attributes are set.</p>
   <a href="/">Back to Home</a>
   <script>
   var ChromeSamples = {
