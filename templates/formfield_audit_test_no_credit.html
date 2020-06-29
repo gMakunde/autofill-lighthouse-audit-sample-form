@@ -1,0 +1,194 @@
+<html><head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Autofill Smoke Test</title>
+</head>
+<body>
+  <form id="checkout" name="checkout" action="../done.html" method="post">
+    Name on card: <input type="text" name="name_cc" placeholder="John Doe" autocomplete="cc-name"><br>
+    Expiry Date: <select name="CCExpiresMonth" autocomplete="cc-exp-month">
+      <option value="">MM</option>
+      <option value="01">01</option>
+      <option value="02">02</option>
+      <option value="03">03</option>
+      <option value="04">04</option>
+      <option value="05">05</option>
+      <option value="06">06</option>
+      <option value="07">07</option>
+      <option value="08">08</option>
+      <option value="09">09</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+    </select> / <select name="CCExpiresYear" autocomplete="cc-exp-year">
+      <option value="">YY</option>
+      <option value="2019">2019</option>
+      <option value="2020">2020</option>
+      <option value="2021">2021</option>
+      <option value="2022">2022</option>
+      <option value="2023">2023</option>
+      <option value="2024">2024</option>
+      <option value="2025">2025</option>
+      <option value="2026">2026</option>
+      <option value="2027">2027</option>
+      <option value="2028">2028</option>
+      <option value="2029">2029</option>
+    </select><br>
+    CVC: <input name="cvc" placeholder="Three digit code on card back" autocomplete="cc-csc"><br>
+    <br>
+    <input id="fill" type="button" value="Fill with default values">
+    <input type="submit" value="Submit">
+  </form>
+  <p>This page will fail the audit because the credit card numbe field is missing.</p>
+  <a href="/">Back to Home</a>
+  <script>
+  var ChromeSamples = {
+    log: function() {
+      var line = Array.prototype.slice.call(arguments).map(function(argument) {
+        return typeof argument === 'string' ? argument : JSON.stringify(argument);
+      }).join(' ');
+
+      $('#log').append(line + '\n');
+    },
+
+    clearLog: function() {
+      $('#log').text('');
+    },
+
+    setStatus: function(status) {
+      $('#log').text(status);
+    },
+
+    setContent: function(newContent) {
+      var content = document.querySelector('#content');
+      while(content.hasChildNodes()) {
+        content.removeChild(content.lastChild);
+      }
+      content.appendChild(newContent);
+    }
+  };
+  </script>
+  
+  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="../utils.js"></script>
+<script type="text/javascript">
+$(function() {
+  $('#fill').click(function() {
+    $(':input[name="name_cc"]').val('John Smith');
+    $(':input[name="CCNo"]').val('5454545454545454');
+    $(':input[name="CCExpiresMonth"]').val(getMonthTwoMonthsFromNow());
+    $(':input[name="CCExpiresYear"]').val(getYearTwoMonthsFromNow());
+    $(':input[name="cvc"]').val('123');
+  });
+});
+</script>
+<script type="text/javascript">
+function initPaymentRequest() {
+  let supportedInstruments = [{
+    supportedMethods: 'https://google.com/pay',
+    data: {
+      merchantName: 'Google Pay Demo',
+      // Place your own Google Pay merchant ID here. The merchant ID is tied to
+      // the origin of the website.
+      // merchantId: '00184145120947117657',
+      // If you do not yet have a merchant ID, uncomment the following line.
+      environment: 'TEST',
+      allowedCardNetworks: ['AMEX', 'DISCOVER', 'MASTERCARD', 'VISA'],
+      paymentMethodTokenizationParameters: {
+        tokenizationType: 'GATEWAY_TOKEN',
+        parameters: {
+          'gateway': 'stripe',
+          // Place your own Stripe publishable key here. Use a matching Stripe
+          // secret key on the server to initiate a transaction.
+          'stripe:publishableKey': 'pk_live_lNk21zqKM2BENZENh3rzCUgo',
+          'stripe:version': '2016-07-06',
+        },
+      },
+    },
+  }];
+
+  let details = {
+    total: {label: 'Donation', amount: {currency: 'USD', value: '55.00'}},
+    displayItems: [
+      {
+        label: 'Original donation amount',
+        amount: {currency: 'USD', value: '65.00'},
+      },
+      {
+        label: 'Friends and family discount',
+        amount: {currency: 'USD', value: '-10.00'},
+      },
+    ],
+  };
+
+  return new PaymentRequest(supportedInstruments, details);
+}
+
+/**
+ * Invokes PaymentRequest for Google Pay.
+ *
+ * @param {PaymentRequest} request The PaymentRequest object.
+ */
+function onBuyClicked(request) {
+  request.show().then(function(instrumentResponse) {
+    sendPaymentToServer(instrumentResponse);
+  })
+  .catch(function(err) {
+    ChromeSamples.setStatus(err);
+  });
+}
+
+/**
+ * Simulates processing the payment data on the server.
+ *
+ * @param {PaymentResponse} instrumentResponse The payment information to
+ * process.
+ */
+function sendPaymentToServer(instrumentResponse) {
+  // There's no server-side component of these samples. No transactions are
+  // processed and no money exchanged hands. Instantaneous transactions are not
+  // realistic. Add a 2 second delay to make it seem more real.
+  window.setTimeout(function() {
+    instrumentResponse.complete('success')
+        .then(function() {
+          document.getElementById('result').innerHTML =
+              instrumentToJsonString(instrumentResponse);
+        })
+        .catch(function(err) {
+          ChromeSamples.setStatus(err);
+        });
+  }, 2000);
+}
+
+/**
+ * Converts the payment instrument into a JSON string.
+ *
+ * @param {PaymentResponse} instrument The instrument to convert.
+ * @return {string} The JSON string representation of the instrument.
+ */
+function instrumentToJsonString(instrument) {
+  if (instrument.toJSON) {
+    return JSON.stringify(instrument, undefined, 2);
+  } else {
+    return JSON.stringify({
+      methodName: instrument.methodName,
+      details: instrument.details,
+    }, undefined, 2);
+  }
+}
+
+if (window.PaymentRequest) {
+  const payButton = document.getElementById('buyButton');
+  let request = initPaymentRequest();
+  payButton.setAttribute('style', 'display: inline;');
+  payButton.addEventListener('click', function() {
+    onBuyClicked(request);
+    request = initPaymentRequest();
+  });
+} else {
+  ChromeSamples.setStatus('This browser does not support web payments');
+}
+</script>
+
+
+</body></html>

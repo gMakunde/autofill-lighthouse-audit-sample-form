@@ -41,6 +41,38 @@ def placeholder():
 def placeholder2():
     return flask.render_template("placeholder_audit_test_pass.html")
 
+@app.route('/formfield-audit-no-credit')
+def formfield1():
+    return flask.render_template("formfield_audit_test_no_credit.html")
+
+@app.route('/formfield-audit-first-last')
+def formfield2():
+    return flask.render_template("formfield_audit_test_first_last.html")
+
+@app.route('/formfield-audit-no-cvc')
+def formfield3():
+    return flask.render_template("formfield_audit_test_no_cvc.html")
+
+@app.route('/formfield-audit-no-date')
+def formfield4():
+    return flask.render_template("formfield_audit_test_no_date.html")
+
+@app.route('/formfield-audit-no-name')
+def formfield5():
+    return flask.render_template("formfield_audit_test_no_name.html")
+
+@app.route('/formfield-audit-passed-auto')
+def formfield6():
+    return flask.render_template("formfield_audit_test_passed_auto.html")
+
+@app.route('/formfield-audit-no-naming-flag')
+def formfield7():
+    return flask.render_template("formfield_audit_passed_naming_flag")
+
+@app.route('/formfield-audit-passed-no-auto')
+def formfield8():
+    return flask.render_template("formfield_audit_test_passed_no_auto.html")
+
 app.run(
     port=int(os.getenv('PORT', 8080)),
     host=os.getenv('IP', '0.0.0.0'),
