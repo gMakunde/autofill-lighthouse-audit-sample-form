@@ -5,8 +5,8 @@
 <body>
   <form id="checkout" name="checkout" action="../done.html" method="post">
     Name on card: <input type="text" name="name_cc" autocomplete="namez"><br>
-    Credit card number: <input type="text" name="CCNo" autocomplete="ccc-num"><br>
-    Expiry Date: <select name="CCExpiresMonth" autocomplete="ccc-exp">
+    Credit card number: <input type="text" name="CCNo" autocomplete="off"><br>
+    Expiry Date: <select name="CCExpiresMonth" autocomplete="on">
       <option value="">MM</option>
       <option value="01">01</option>
       <option value="02">02</option>
@@ -34,12 +34,12 @@
       <option value="2028">2028</option>
       <option value="2029">2029</option>
     </select><br>
-    CVC: <input name="cvc" autocomplete="cc-cvc"><br>
+    CVC: <input name="cvc" autocomplete="cc-csc"><br>
     <br>
     <input id="fill" type="button" value="Fill with default values">
     <input type="submit" value="Submit">
   </form>
-  <p>This page will fail the audit because none of the autocomplete attributes are using the common attribute names that the chrome browser can detect</p>
+  <p>This page will receive a low score on the audit. It has a mix of invalid names, attributes set to "off and "on" and a correct attribute name.</p>
   <a href="/">Back to Home</a>
   <script>
   var ChromeSamples = {
