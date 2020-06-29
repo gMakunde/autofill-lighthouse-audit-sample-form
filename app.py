@@ -11,11 +11,27 @@ def homepage():
 
 @app.route('/autocomplete-audit-no-auto')
 def autcomplete1():
-    return flask.render_template("autocomplete_audit_test.html")
+    return flask.render_template("autocomplete_audit_test_no_auto.html")
 
 @app.route('/autocomplete-audit-bad-auto')
 def autocomplete2():
-    return flask.render_template("autocomplete_audit_test2.html")
+    return flask.render_template("autocomplete_audit_test_invalid_auto.html")
+
+@app.route('/autocomplete-audit-on-auto')
+def autocomplete3():
+    return flask.render_template("autocomplete_audit_test_on_auto.html")
+
+@app.route('/autocomplete-audit-off-auto')
+def autocomplete4():
+    return flask.render_template("autocomplete_audit_test_off_auto.html")
+
+@app.route('/autocomplete-audit-mixed-auto')
+def autocomplete5():
+    return flask.render_template("autocomplete_audit_test_mixed_auto.html")
+
+@app.route('/autocomplete-audit-passed)
+def autocomplete6():
+    return flask.render_template("autocomplete_audit_test_passed.html")
 
 @app.route('/placeholder-audit')
 def placeholder():
