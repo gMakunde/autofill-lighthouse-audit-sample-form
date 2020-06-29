@@ -37,6 +37,10 @@ def autocomplete6():
 def placeholder():
     return flask.render_template("placeholder_audit_test.html")
 
+@app.route('/placeholder-audit-passed')
+def placeholder():
+    return flask.render_template("placeholder_audit_test_pass.html")
+
 app.run(
     port=int(os.getenv('PORT', 8080)),
     host=os.getenv('IP', '0.0.0.0'),
