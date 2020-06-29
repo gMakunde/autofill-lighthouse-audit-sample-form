@@ -4,9 +4,9 @@
 </head>
 <body>
   <form id="checkout" name="checkout" action="../done.html" method="post">
-    Name on card: <input type="text" name="name_cc"><br>
-    Credit card number: <input type="text" name="CCNo"><br>
-    Expiry Date: <select name="CCExpiresMonth">
+    Name on card: <input type="text" name="name_cc" autocomplete="namez"><br>
+    Credit card number: <input type="text" name="CCNo" autocomplete="ccc-num"><br>
+    Expiry Date: <select name="CCExpiresMonth" autocomplete="ccc-exp">
       <option value="">MM</option>
       <option value="01">01</option>
       <option value="02">02</option>
@@ -20,7 +20,7 @@
       <option value="10">10</option>
       <option value="11">11</option>
       <option value="12">12</option>
-    </select> / <select name="CCExpiresYear">
+    </select> / <select name="CCExpiresYear" autocomplete="none">
       <option value="">YY</option>
       <option value="2019">2019</option>
       <option value="2020">2020</option>
@@ -34,11 +34,13 @@
       <option value="2028">2028</option>
       <option value="2029">2029</option>
     </select><br>
-    CVC: <input name="cvc"><br>
+    CVC: <input name="cvc" autocomplete="cc-cvc"><br>
     <br>
     <input id="fill" type="button" value="Fill with default values">
     <input type="submit" value="Submit">
   </form>
+  <p>This page will fail the audit because none of the autocomplete attributes are using the common attribute names that the chrome browser can detect</p>
+  <button href="/">Back to Home</button>
   <script>
   var ChromeSamples = {
     log: function() {
