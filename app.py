@@ -29,7 +29,7 @@ def autocomplete4():
 def autocomplete5():
     return flask.render_template("autocomplete_audit_test_mixed_auto.html")
 
-@app.route('/autocomplete-audit-passed)
+@app.route('/autocomplete-audit-passed')
 def autocomplete6():
     return flask.render_template("autocomplete_audit_test_passed.html")
 
