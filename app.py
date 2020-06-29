@@ -65,7 +65,7 @@ def formfield5():
 def formfield6():
     return flask.render_template("formfield_audit_test_passed_auto.html")
 
-@app.route('/formfield-audit-no-naming-flag')
+@app.route('/formfield-audit-naming-flag')
 def formfield7():
     return flask.render_template("formfield_audit_test_passed_naming_flag.html")
 
