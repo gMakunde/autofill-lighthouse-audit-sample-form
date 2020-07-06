@@ -73,6 +73,18 @@ def formfield7():
 def formfield8():
     return flask.render_template("formfield_audit_test_passed_no_auto.html")
 
+@app.route('/realistic-ebay')
+def realistic1():
+    return flask.render_template("realistic_ebay.html")
+
+@app.route('/realistic-ajmason')
+def realistic2():
+    return flask.render_template("realistic_ajmason.html")
+
+@app.route('/realistic-1800contacts')
+def realistic3():
+    return flask.render_template("realisitc_1800contacts.html")
+
 app.run(
     port=int(os.getenv('PORT', 8080)),
     host=os.getenv('IP', '0.0.0.0'),
