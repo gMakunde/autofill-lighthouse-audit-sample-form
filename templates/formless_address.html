@@ -1,0 +1,161 @@
+<html><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Autofill Smoke Test</title>
+  </head>
+  <body>
+    <div id="shipping">
+      <input id="fill" type="button" value="Fill with default values"><br>
+      <u>Shipping address:</u><br>
+      Name: <input type="text" name="name_shipping"><br>
+      Address: <input type="text" name="address_shipping"><br>
+      City: <input type="text" name="city_shipping"><br>
+      State: <select name="state_shipping">
+        <option value="" selected="">Select a state</option>
+        <option value="CA">CA</option>
+        <option value="MA">MA</option>
+        <option value="NY">NY</option>
+        <option value="MD">MD</option>
+        <option value="OR">OR</option>
+        <option value="OH">OH</option>
+        <option value="IL">IL</option>
+        <option value="DC">DC</option>
+      </select><br>
+      Zip: <input type="text" name="zip_shipping"><br>
+      <input id="submit1" type="button" value="Submit">
+    </div>
+    <div id="billing" style="display: none">
+      <u>Billing address:</u><br>
+      Name: <input type="text" name="name_billing"><br>
+      Address: <input type="text" name="address_billing"><br>
+      City: <input type="text" name="city_billing"><br>
+      State: <select name="state_billing">
+        <option value="" selected="">Select a state</option>
+        <option value="CA">CA</option>
+        <option value="MA">MA</option>
+        <option value="NY">NY</option>
+        <option value="MD">MD</option>
+        <option value="OR">OR</option>
+        <option value="OH">OH</option>
+        <option value="IL">IL</option>
+        <option value="DC">DC</option>
+      </select><br>
+      Zip: <input type="text" name="zip_billing"><br>
+      <input id="submit2" type="button" value="Submit">
+    </div>
+    <div id="payment" style="display: none">
+      Name on card: <input type="text" name="CCname"><br>
+      Credit card number: <input type="text" name="CCNo"><br>
+      Expiry Date: <select name="CCExpiresMonth">
+        <option value="">MM</option>
+        <option value="01">01</option>
+        <option value="02">02</option>
+        <option value="03">03</option>
+        <option value="04">04</option>
+        <option value="05">05</option>
+        <option value="06">06</option>
+        <option value="07">07</option>
+        <option value="08">08</option>
+        <option value="09">09</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+      </select> / <select name="CCExpiresYear">
+        <option value="">YY</option>
+        <option value="2019">2019</option>
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+        <option value="2026">2026</option>
+        <option value="2027">2027</option>
+        <option value="2028">2028</option>
+        <option value="2029">2029</option>
+      </select><br>
+      CVC: <input name="cvc"><br>
+      <br>
+      <input id="submit3" type="button" value="Submit">
+    </div>
+    <div id="thanks" style="display: none">
+      Thanks!<br>
+      <br>
+      <a href="../index.html">Go back</a>
+    </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="../utils.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    $('#fill').click(function() {
+      $(':input[name="name_shipping"]').val('John Smith');
+      $(':input[name="address_shipping"]').val('1550 Plymouth St');
+      $(':input[name="city_shipping"]').val('Mountain View');
+      $(':input[name="state_shipping"]').val('CA');
+      $(':input[name="zip_shipping"]').val('94043');
+      $(':input[name="name_billing"]').val('John Smith');
+      $(':input[name="address_billing"]').val('1600 Amphitheatre Pkwy');
+      $(':input[name="city_billing"]').val('Mountain View');
+      $(':input[name="state_billing"]').val('CA');
+      $(':input[name="zip_billing"]').val('94043');
+      $(':input[name="CCname"]').val('John Smith');
+      $(':input[name="CCNo"]').val('5454545454545454');
+      $(':input[name="CCExpiresMonth"]').val(getMonthTwoMonthsFromNow());
+      $(':input[name="CCExpiresYear"]').val(getYearTwoMonthsFromNow());
+      $(':input[name="cvc"]').val('123');
+    });
+  });
+  
+  $(function() {
+    $('#submit1').click(function() {
+      var req = new XMLHttpRequest();
+      var clobber = function() {
+        console.log("Clobbering");
+        document.getElementById('shipping').style.display = "none";
+        document.getElementById('billing').style.display = "inline";
+      };
+      req.addEventListener("load", clobber);
+      req.addEventListener("error", clobber);
+      req.addEventListener("abort", clobber);
+      req.open('GET', '../done.html');
+      req.overrideMimeType("text/plain; charset=x-user-defined");
+      req.send();
+    });
+  });
+  
+  $(function() {
+    $('#submit2').click(function() {
+      var req = new XMLHttpRequest();
+      var clobber = function() {
+        console.log("Clobbering");
+        document.getElementById('billing').style.display = "none";
+        document.getElementById('payment').style.display = "inline";
+      };
+      req.addEventListener("load", clobber);
+      req.addEventListener("error", clobber);
+      req.addEventListener("abort", clobber);
+      req.open('GET', '../done.html');
+      req.overrideMimeType("text/plain; charset=x-user-defined");
+      req.send();
+    });
+  });
+  
+  $(function() {
+    $('#submit3').click(function() {
+      var req = new XMLHttpRequest();
+      var clobber = function() {
+        console.log("Clobbering");
+        document.getElementById('payment').style.display = "none";
+        document.getElementById('thanks').style.display = "inline";  // Note: Doesn't navigate.
+      };
+      req.addEventListener("load", clobber);
+      req.addEventListener("error", clobber);
+      req.addEventListener("abort", clobber);
+      req.open('GET', '../done.html');
+      req.overrideMimeType("text/plain; charset=x-user-defined");
+      req.send();
+    });
+  });
+  </script>
+  
+  
+  </body></html>

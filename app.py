@@ -85,6 +85,10 @@ def realistic2():
 def realistic3():
     return flask.render_template("realisitc_1800contacts.html")
 
+@app.route('/formless-inputs')
+def formless():
+    return flask.render_template("formless_address.html")
+
 app.run(
     port=int(os.getenv('PORT', 8080)),
     host=os.getenv('IP', '0.0.0.0'),
