@@ -41,8 +41,8 @@
   <div id="shipping">
     <input id="fill" type="button" value="Fill with default values"><br>
     <u>Shipping address:</u><br>
-    <label id="shippingName" for="name_shipping">Name:</label> <input type="text" name="name_shipping"><br>
-    <label id="address_shipping" for="address_shipping">Address:</label> <input type="text" name="address_shipping"><br>
+    <label id="shippingName" for="name_shipping">Name:</label> <input type="text" name="name_shipping" autocomplete="shipping name"><br>
+    <label id="address_shipping" for="address_shipping">Address:</label> <input type="text" name="address_shipping" autocomplete="shipping street-address"><br>
     <label id="city_shipping" for="city_shipping">City:</label> <input type="text" name="city_shipping"><br>
     <label id="state_shipping" for="Sstate_shipping" > State:</label> <select name="state_shipping">
       <option value="" selected="">Select a state</option>
@@ -61,7 +61,7 @@
   <div id="billing" style="display: none">
     <u>Billing address:</u><br>
     <label id="name_billing" for="name_billing">Name:</label> <input type="text" name="name_billing"><br>
-    <label id="address_billing" for="address_billing">Address:</label> <input type="text" name="address_billing"><br>
+    <label id="address_billing" for="address_billing">Address:</label> <input type="text" name="address_billing" autocomplete="billing street-address"><br>
     <label id="city_billing" label="city_billing">City:</label> <input type="text" name="city_billing"><br>
     <label id="state_billing" for="state_billing">State:</label> <select name="state_billing">
       <option value="" selected="">Select a state</option>
@@ -108,7 +108,7 @@
       <option value="2028">2028</option>
       <option value="2029">2029</option>
     </select><br>
-    <label id="cvc" for="cvc">CVC:</label> <input name="cvc"><br>
+    <label id="cvc" for="cvc">CVC:</label> <input name="cvc" autocomplete="cc-csc"><br>
     <br>
     <input id="submit3" type="button" value="Submit">
   </div>
