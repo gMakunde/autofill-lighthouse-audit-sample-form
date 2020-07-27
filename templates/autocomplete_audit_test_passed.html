@@ -4,9 +4,9 @@
 </head>
 <body>
   <form id="checkout" name="checkout" action="../done.html" method="post">
-    Name on card: <input type="text" name="name_cc" autocomplete="cc-name"><br>
-    Credit card number: <input type="text" name="CCNo" autocomplete="cc-number"><br>
-    Expiry Date: <select name="CCExpiresMonth" autocomplete="cc-exp-month">
+    <label id="cardName" for="name_cc">Name on card:</label> <textarea type="text" name="name_cc" autocomplete="cc-name"></textarea><br>
+    <label id="cardNumber" for="CCNo">Credit card number:</label> <input type="text" name="CCNo" autocomplete="cc-number"><br>
+    <label id="expDate" for="CCExpiresMonth">Expiry Date:</label> <select name="CCExpiresMonth" autocomplete="cc-exp-month">
       <option value="">MM</option>
       <option value="01">01</option>
       <option value="02">02</option>
@@ -34,7 +34,7 @@
       <option value="2028">2028</option>
       <option value="2029">2029</option>
     </select><br>
-    CVC: <input name="cvc" autocomplete="cc-csc"><br>
+    <label id="cvc" for="cvc">CVC:</label>  <input name="cvc" autocomplete="cc-csc"><br>
     <br>
     <input id="fill" type="button" value="Fill with default values">
     <input type="submit" value="Submit">

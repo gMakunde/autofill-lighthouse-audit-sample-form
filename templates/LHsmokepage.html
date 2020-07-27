@@ -1,0 +1,122 @@
+<html><head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Autofill Smoke Test</title>
+</head>
+<body>
+  <form id="checkout" name="checkout" action="../done.html" method="post">
+      <label id="cardName" for="name_cc">Name on card:</label> <textarea type="text" name="name_cc" autocomplete="cc-name"></textarea><br>
+      <label id="cardNumber" for="CCNo">Credit card number:</label> <input type="text" name="CCNo" autocomplete="cc-number"><br>
+      <label id="expDate" for="CCExpiresMonth">Expiry Date:</label> <select name="CCExpiresMonth" autocomplete="cc-exp-month">
+        <option value="">MM</option>
+        <option value="01">01</option>
+        <option value="02">02</option>
+        <option value="03">03</option>
+        <option value="04">04</option>
+        <option value="05">05</option>
+        <option value="06">06</option>
+        <option value="07">07</option>
+        <option value="08">08</option>
+        <option value="09">09</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+      </select> / <select name="CCExpiresYear" autocomplete="cc-exp-year">
+        <option value="">YY</option>
+        <option value="2019">2019</option>
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+        <option value="2026">2026</option>
+        <option value="2027">2027</option>
+        <option value="2028">2028</option>
+        <option value="2029">2029</option>
+      </select><br>
+      <label id="cvc" for="cvc">CVC:</label> <input name="cvc" autocomplete="cc-csc"><br>
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+  <div id="shipping">
+    <input id="fill" type="button" value="Fill with default values"><br>
+    <u>Shipping address:</u><br>
+    <label id="shippingName" for="name_shipping">Name:</label> <input type="text" name="name_shipping"><br>
+    <label id="address_shipping" for="address_shipping">Address:</label> <input type="text" name="address_shipping"><br>
+    <label id="city_shipping" for="city_shipping">City:</label> <input type="text" name="city_shipping"><br>
+    <label id="state_shipping" for="Sstate_shipping" > State:</label> <select name="state_shipping">
+      <option value="" selected="">Select a state</option>
+      <option value="CA">CA</option>
+      <option value="MA">MA</option>
+      <option value="NY">NY</option>
+      <option value="MD">MD</option>
+      <option value="OR">OR</option>
+      <option value="OH">OH</option>
+      <option value="IL">IL</option>
+      <option value="DC">DC</option>
+    </select><br>
+    <label id="zip_shipping" for="zip_shipping">Zip:</label> <input type="text" name="zip_shipping"><br>
+    <input id="submit1" type="button" value="Submit">
+  </div>
+  <div id="billing" style="display: none">
+    <u>Billing address:</u><br>
+    <label id="name_billing" for="name_billing">Name:</label> <input type="text" name="name_billing"><br>
+    <label id="address_billing" for="address_billing">Address:</label> <input type="text" name="address_billing"><br>
+    <label id="city_billing" label="city_billing">City:</label> <input type="text" name="city_billing"><br>
+    <label id="state_billing" for="state_billing">State:</label> <select name="state_billing">
+      <option value="" selected="">Select a state</option>
+      <option value="CA">CA</option>
+      <option value="MA">MA</option>
+      <option value="NY">NY</option>
+      <option value="MD">MD</option>
+      <option value="OR">OR</option>
+      <option value="OH">OH</option>
+      <option value="IL">IL</option>
+      <option value="DC">DC</option>
+    </select><br>
+    <label id="zip_billing" for="zip_billing">Zip:</label> <input type="text" name="zip_billing"><br>
+    <input id="submit2" type="button" value="Submit">
+  </div>
+  <div id="payment">
+    <label id="cardName" for="name_cc">Name on card:</label>  <textarea type="text" name="name_cc" autocomplete="cc-name"></textarea><br>
+    <label id="cardNumber" for="CCNo">Credit card number:</label>: <input type="text" name="CCNo"><br>
+    <label id="expDate" for="CCExpiresMonth">Expiry Date:</label>: <select name="CCExpiresMonth">
+      <option value="">MM</option>
+      <option value="01">01</option>
+      <option value="02">02</option>
+      <option value="03">03</option>
+      <option value="04">04</option>
+      <option value="05">05</option>
+      <option value="06">06</option>
+      <option value="07">07</option>
+      <option value="08">08</option>
+      <option value="09">09</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+    </select> / <select name="CCExpiresYear">
+      <option value="">YY</option>
+      <option value="2019">2019</option>
+      <option value="2020">2020</option>
+      <option value="2021">2021</option>
+      <option value="2022">2022</option>
+      <option value="2023">2023</option>
+      <option value="2024">2024</option>
+      <option value="2025">2025</option>
+      <option value="2026">2026</option>
+      <option value="2027">2027</option>
+      <option value="2028">2028</option>
+      <option value="2029">2029</option>
+    </select><br>
+    <label id="cvc" for="cvc">CVC:</label> <input name="cvc"><br>
+    <br>
+    <input id="submit3" type="button" value="Submit">
+  </div>
+  <div id="thanks">
+    <br>
+    <a href="/">Go back</a>
+  </div>
+
+
+
+</body></html>

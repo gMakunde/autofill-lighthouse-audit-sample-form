@@ -81,9 +81,9 @@ def formfield8():
 def realistic1():
     return flask.render_template("realistic_ebay.html")
 
-@app.route('/realistic-ajmason')
+@app.route('/LHsmokepage')
 def realistic2():
-    return flask.render_template("realistic_ajmason.html")
+    return flask.render_template("LHsmokepage.html")
 
 @app.route('/realistic-1800contacts')
 def realistic3():
