@@ -1,12 +1,18 @@
+<!doctype html>
+<!--
+ * Copyright 2020 The Lighthouse Authors. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+-->
 <html><head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Autofill Smoke Test</title>
 </head>
 <body>
   <form id="checkout" name="checkout" action="../done.html" method="post">
-      <label id="cardName" for="name_cc">Name on card:</label> <textarea type="text" name="name_cc" autocomplete="cc-name"></textarea><br>
-      <label id="cardNumber" for="CCNo">Credit card number:</label> <input type="text" name="CCNo" autocomplete="cc-number"><br>
-      <label id="expDate" for="CCExpiresMonth">Expiry Date:</label> <select name="CCExpiresMonth" autocomplete="cc-exp-month">
+      <label id="cardName" for="name_cc">Name on card:</label> <textarea type="text" id="name_cc" autocomplete="cc-name"></textarea><br>
+      <label id="cardNumber" for="CCNo">Credit card number:</label> <input type="text" id="CCNo" autocomplete="cc-number"><br>
+      <label id="expDate" for="CCExpiresMonth">Expiry Date:</label> <select id="CCExpiresMonth" autocomplete="cc-exp-month">
         <option value="">MM</option>
         <option value="01">01</option>
         <option value="02">02</option>
@@ -20,7 +26,7 @@
         <option value="10">10</option>
         <option value="11">11</option>
         <option value="12">12</option>
-      </select> / <select name="CCExpiresYear" autocomplete="cc-exp-year">
+      </select> / <select id="CCExpiresYear" autocomplete="cc-exp-year">
         <option value="">YY</option>
         <option value="2019">2019</option>
         <option value="2020">2020</option>
@@ -34,17 +40,17 @@
         <option value="2028">2028</option>
         <option value="2029">2029</option>
       </select><br>
-      <label id="cvc" for="cvc">CVC:</label> <input name="cvc" autocomplete="cc-csc"><br>
+      <label id="cvc" for="cvc">CVC:</label> <input id="cvc" autocomplete="cc-csc"><br>
       <br>
       <input type="submit" value="Submit">
     </form>
   <div id="shipping">
     <input id="fill" type="button" value="Fill with default values"><br>
     <u>Shipping address:</u><br>
-    <label id="shippingName" for="name_shipping">Name:</label> <input type="text" name="name_shipping" autocomplete="shipping name"><br>
-    <label id="address_shipping" for="address_shipping">Address:</label> <input type="text" name="address_shipping" autocomplete="shipping street-address"><br>
-    <label id="city_shipping" for="city_shipping">City:</label> <input type="text" name="city_shipping"><br>
-    <label id="state_shipping" for="Sstate_shipping" > State:</label> <select name="state_shipping">
+    <label id="shippingName" for="name_shipping">Name:</label> <input type="text" id="name_shipping" autocomplete="shipping name"><br>
+    <label id="address_shipping" for="address_shipping">Address:</label> <input type="text" id="address_shipping" autocomplete="shipping street-address"><br>
+    <label id="city_shipping" for="city_shipping">City:</label> <input type="text" id="city_shipping"><br>
+    <label id="state_shipping" for="Sstate_shipping" > State:</label> <select id="state_shipping">
       <option value="" selected="">Select a state</option>
       <option value="CA">CA</option>
       <option value="MA">MA</option>
@@ -55,15 +61,15 @@
       <option value="IL">IL</option>
       <option value="DC">DC</option>
     </select><br>
-    <label id="zip_shipping" for="zip_shipping">Zip:</label> <input type="text" name="zip_shipping"><br>
+    <label id="zip_shipping" for="zip_shipping">Zip:</label> <input type="text" id="zip_shipping"><br>
     <input id="submit1" type="button" value="Submit">
   </div>
   <div id="billing" style="display: none">
     <u>Billing address:</u><br>
-    <label id="name_billing" for="name_billing">Name:</label> <input type="text" name="name_billing"><br>
-    <label id="address_billing" for="address_billing">Address:</label> <input type="text" name="address_billing" autocomplete="billing street-address"><br>
-    <label id="city_billing" label="city_billing">City:</label> <input type="text" name="city_billing"><br>
-    <label id="state_billing" for="state_billing">State:</label> <select name="state_billing">
+    <label id="name_billing" for="name_billing">Name:</label> <input type="text" id="name_billing"><br>
+    <label id="address_billing" for="address_billing">Address:</label> <input type="text" id="address_billing" autocomplete="billing street-address"><br>
+    <label id="city_billing" label="city_billing">City:</label> <input type="text" id="city_billing"><br>
+    <label id="state_billing" for="state_billing">State:</label> <select id="state_billing">
       <option value="" selected="">Select a state</option>
       <option value="CA">CA</option>
       <option value="MA">MA</option>
@@ -74,13 +80,13 @@
       <option value="IL">IL</option>
       <option value="DC">DC</option>
     </select><br>
-    <label id="zip_billing" for="zip_billing">Zip:</label> <input type="text" name="zip_billing"><br>
+    <label id="zip_billing" for="zip_billing">Zip:</label> <input type="text" id="zip_billing"><br>
     <input id="submit2" type="button" value="Submit">
   </div>
   <div id="payment">
-    <label id="cardName" for="name_cc">Name on card:</label>  <textarea type="text" name="name_cc" autocomplete="cc-name"></textarea><br>
+    <label id="cardName" for="name_cc">Name on card:</label>  <textarea type="text" id="name_cc" autocomplete="cc-name"></textarea><br>
     <label id="cardNumber" for="CCNo">Credit card number:</label>: <input type="text" name="CCNo"><br>
-    <label id="expDate" for="CCExpiresMonth">Expiry Date:</label>: <select name="CCExpiresMonth">
+    <label id="expDate" for="CCExpiresMonth">Expiry Date:</label>: <select id="CCExpiresMonth">
       <option value="">MM</option>
       <option value="01">01</option>
       <option value="02">02</option>
@@ -94,7 +100,7 @@
       <option value="10">10</option>
       <option value="11">11</option>
       <option value="12">12</option>
-    </select> / <select name="CCExpiresYear">
+    </select> / <select id="CCExpiresYear">
       <option value="">YY</option>
       <option value="2019">2019</option>
       <option value="2020">2020</option>
@@ -108,7 +114,7 @@
       <option value="2028">2028</option>
       <option value="2029">2029</option>
     </select><br>
-    <label id="cvc" for="cvc">CVC:</label> <input name="cvc" autocomplete="cc-csc"><br>
+    <label id="cvc" for="cvc">CVC:</label> <input id="cvc" autocomplete="cc-csc"><br>
     <br>
     <input id="submit3" type="button" value="Submit">
   </div>
