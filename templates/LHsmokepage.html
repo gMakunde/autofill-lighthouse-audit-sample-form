@@ -56,7 +56,7 @@
          <u>Shipping address:</u><br>
          <label for="name_shipping">Name:</label> <input type="text" id="name_shipping" autocomplete="name" placeholder="John Doe"><br>
          <label for="address_shipping">Address:</label> <input type="text" id="address_shipping" autocomplete="shippin street-address" placeholder="Your address"><br>
-         <label for="city_shipping">City:</label> <input type="text" id="city_shipping" placeholder="city you live"><br>
+         <label for="city_shipping">City:</label> <input type="text" id="city_shipping" placeholder="city you live" autocomplete="mobile section-red shipping address-level2"><br>
          <label for="Sstate_shipping" > State:</label> 
          <select id="state_shipping">
             <option value="" selected="">Select a state</option>
@@ -77,7 +77,7 @@
          <u>Billing address:</u><br>
          <label for="name_billing">Name:</label> <input type="text" id="name_billing" name="name_billing" placeholder="your name" autocomplete="sectio-red billing name"><br>
          <label for="address_billing">Address:</label> <input type="text" id="address_billing" name="address_billing" autocomplete="billing street-address" placeholder="your address"><br>
-         <label for="city_billing">City:</label> <input type="text" id="city_billing" name="city_billing"  placeholder="city you live in"><br>
+         <label for="city_billing">City:</label> <input type="text" id="city_billing" name="city_billing"  placeholder="city you live in" autocomplete="section-red shipping "><br>
          <label for="state_billing">State:</label> 
          <select id="state_billing" name="state_billing">
             <option value="" selected="">Select a state</option>
@@ -132,6 +132,9 @@
          </select>
          <br>
          <label for="cvc2">CVC:</label> <input id="cvc2" name="cvc2" autocomplete="cc-csc"><br>
+         <br>
+         <label for="mobile-number">Mobile phone Number:</label>
+         <input type="text" name="mobile-number" id="mobile-number" autocomplete="section-red shipping mobile tel">
          <br>
          <input id="submit3" type="button" value="Submit">
       </div>
