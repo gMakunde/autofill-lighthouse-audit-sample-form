@@ -77,9 +77,9 @@ def formfield7():
 def formfield8():
     return flask.render_template("formfield_audit_test_passed_no_auto.html")
 
-@app.route('/realistic-ebay')
+@app.route('/accordion')
 def realistic1():
-    return flask.render_template("realistic_ebay.html")
+    return flask.render_template("accordion.html")
 
 @app.route('/LHsmokepage')
 def realistic2():
